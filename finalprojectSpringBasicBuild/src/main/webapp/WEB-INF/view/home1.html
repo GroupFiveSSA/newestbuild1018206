@@ -116,14 +116,17 @@
                 				<br>
                 				
                  			<div style="background-color:#002A5C; color:white">
-                				<form id = "userForm" class="form-horizontal">
+                				<form id = "userForm" name = "user" class="form-horizontal">
                     				<div class="form-group">
                     				<br><br>
                         				<label for="firstName" class="col-sm-2 control-label">First Name</label>
                             				<div class="col-sm-5">
                             					<input ng-model="user.firstName" type="text"
-                                				class="form-control" id="firstName" name="firstName"
-                                				placeholder="First Name" required="true"></input>
+                                				class="form-control" id="firstName" name="firstName" 
+                                				placeholder="First Name" required></input>
+                                				<div ng-messages="user.firstName.$error">
+      												<div ng-message="required">This field is required</div>
+      											</div>
                         					</div>
                     				</div>
                     				
@@ -132,7 +135,10 @@
                         					<div class="col-sm-5">
                             					<input ng-model="user.lastName" type="text"
                                 				class="form-control" id="lastName" name="lastName"
-                                				placeholder="Last Name" required="true"></input>
+                                				placeholder="Last Name" required></input>
+                                				<div ng-messages="user.lastName.$error">
+      												<div ng-message="required">This field is required</div>
+      											</div>
                         					</div>
                     				</div>
                     				
@@ -141,7 +147,11 @@
                             				<div class="col-sm-5">
                             					<input type="email" ng-model="user.email"
                                 				class="form-control" id="email" name="email"
-                                				placeholder="user@example.com" required="true"></input>
+                                				placeholder="@example.com" required></input>
+                                				<div ng-messages="user.email.$error">
+      												<div ng-message="required">This field is required</div>
+      												<div ng-message="email">Please enter a valid email</div>
+      											</div>
                         					</div>
                     				</div>
                     				
@@ -150,7 +160,10 @@
                         					<div class="col-sm-5">
                             					<input ng-model="user.addressline1" type="text"
                                 				class="form-control" id="addressline1" name="addressline1"
-                                				placeholder="123 Anywhere Street"></input>
+                                				placeholder="Address Line 1" required></input>
+                                				<div ng-messages="user.addressline1.$error">
+      												<div ng-message="required">This field is required</div>
+      											</div>
                         					</div>
                     					</div>
                     					
@@ -159,7 +172,7 @@
                         						<div class="col-sm-5">
                             						<input ng-model="user.addressline2" type="text"
                                 					class="form-control" id="addressline2" name="addressline2"
-                                					placeholder="Apartment C"></input>
+                                					placeholder="Address Line 2"></input>
                         						</div>
                     					</div>
                     					
@@ -168,7 +181,10 @@
                         						<div class="col-sm-5">
                             						<input ng-model="user.city" type="text"
                                 					class="form-control" id="city" name="city"
-                                					placeholder="City" required="true"></input>
+                                					placeholder="City" required></input>
+                                					<div ng-messages="user.city.$error">
+      													<div ng-message="required">This field is required</div>
+      												</div>
                         						</div>
                     					</div>
                     					
@@ -178,7 +194,10 @@
                         						<div class="col-sm-5">
                             						<input ng-model="user.state" type="text"
                                 					class="form-control" id="state" name="state"
-                                					placeholder="State" required="true"></input>
+                                					placeholder="State" required></input>
+                                					<div ng-messages="user.state.$error">
+      													<div ng-message="required">This field is required</div>
+      												</div>
                         						</div>
                     					</div>
                     					
@@ -187,21 +206,29 @@
                         						<div class="col-sm-5">
                             						<input ng-model="user.zipcode" type="text"
                                 					class="form-control" id="zipcode" name="city"
-                                					placeholder="Zip Code" required="true"></input>
+                                					placeholder="Zip Code" required></input>
+                                					<div ng-messages="userForm.zipcode.$error">
+      													<div ng-message="required">This field is required</div>
+      												</div>
                         						</div>
                     					</div>
                     					
                     					<div class="form-group">
                         					<label for="password" class="col-sm-2 control-label">Password</label>
                         						<div class="col-sm-5">
-                            						<input ng-model="user.password" type="text"
+                            						<input ng-model="user.password" type="password"
                                 					class="form-control" id="password" name="password"
-                                					aria-describedby="helpBlock" required=""></input> <span
+                                					aria-describedby="helpBlock" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%\^\&*\)\(+=._-])[0-9a-zA-Z!@#\$%\^\&*\)\(+=._-]{8,}$/" required></input> <span
                                 					id="helpBlock" class="help-block" style ="color:white">Password should be at
                                 					least 8 characters, 1 upppercase, 1 lowercase, 1 special
                                 					character, and one number</span>
+                                					<div ng-messages="userForm.password.$error">
+      													<div ng-message="required">This field is required</div>
+      													<div ng-message="pattern">Please enter a valid password</div>
+    												</div>
                         						</div>
                     					</div>
+                    					
                     					<div class="form-group">
     										<label for="verifyPassword" class="col-sm-2 control-label">Verify Password</label>
     											<div class="col-sm-5">
@@ -300,7 +327,7 @@
    
  
  			<script>   	       
-			var app = angular.module('angularApp', ['ngResource', 'ngMaterial']);
+			var app = angular.module('angularApp', ['ngResource', 'ngMaterial', 'ngMessages']);
 			
 			app.factory('UserService', ['$resource', function ($resource) {
     			return $resource(
