@@ -42,16 +42,34 @@
                 </button>
                 <a class="navbar-brand" href="/home1.html"> <img
                     src="images/handholding.jpg" align="middle" alt=""
-                    style="width: 60px; height: 60px;"><img>
+                    style="width: 60px; height: 60px;">
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse"
                 id="bs-example-navbar-collapse-1" align="right" color="white">
                 <ul class="nav navbar-nav">
-                    <li><a href="/about.html" style="color: white""font-size:34px;" >About</a></li>
-                    <li><a href="/services.html" style="color: white">Services</a></li>
-                    <li><a href="/developercontact.html" style="color: white">Contact</a></li>
+                    <     <li>
+                       <a href="/about.html" style="color: white">About</a>
+                   </li>
+                   <li>
+                       <a href="/services.html" style="color: white">Services</a>
+                   </li>
+                   <li>
+                       <a href="/developercontact.html" style="color: white">Contact</a>
+                   </li>
+                   <li>
+                       <a th:if="${session.user.userId != null}" href="/PostLoginPageforWidgets.html" style="color: white">HUD Locator</a>
+                   </li>
+                   <li>
+                       <a th:if="${session.user.userId != null}" href="/manageprofile.html" style="color: white">Manage Profile</a>
+                   </li>
+                    <li>
+                       <a th:if="${session.user.email == 'admin@banr.gov'}" href="/admin.html" style="color: white">Administration</a>
+                   </li>
+                   <li>
+                       <a href="/home1.html" style="color: white">Logout</a>
+                   </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
