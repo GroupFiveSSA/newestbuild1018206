@@ -65,6 +65,18 @@
                    <li>
                        <a href="/developercontact.html" style="color: white">Contact</a>
                    </li>
+                   <li>
+                       <a th:if="${session.user != null}" href="/PostLoginPageforWidgets.html" style="color: white">HUD Locator</a>
+                   </li>
+                   <li>
+                       <a th:if="${session.user != null}" href="/manageprofile.html" style="color: white">Manage Profile</a>
+                   </li>
+                    <li>
+                       <a th:if="${session.user != null && session.user.email == 'admin@banr.gov'}" href="/admin.html" style="color: white">Administration</a>
+                   </li>
+                   <li>
+                       <a th:if="${session.user != null}" href="/userLogout" style="color: white">Logout</a>
+                   </li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -104,8 +116,8 @@
                 
                <div ng-controller="UserCtrl">
     			<div class="alert alert-danger" th:if="${session.error != null}" th:text="${session.error}">Error if exists</div>
-        		<button ng-click="loginButtonClick()" class="btn btn-primary">Login</button>
-        		<button ng-click="addButtonClick()" class="btn btn-primary">Register</button>
+        		<button ng-click="loginButtonClick()" class="btn btn-primary" th:if="${session.user == null}">Login</button>
+        		<button ng-click="addButtonClick()" class="btn btn-primary" th:if="${session.user == null}">Register</button>
             
        
  
