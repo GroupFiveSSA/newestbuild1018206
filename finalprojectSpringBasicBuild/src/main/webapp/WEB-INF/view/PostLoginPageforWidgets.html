@@ -120,7 +120,7 @@
                         <div class="col-sm-10">
                             <input ng-model="hudcity" type="text"
                                 class="form-control" id="hudcity" name="hudcity"
-                                placeholder="City"></input>
+                                placeholder="City" th:value="${session.user.city}"></input>
                         </div>
                     </div>
                      <div class="form-group">
@@ -176,77 +176,76 @@
                         <label for="firstName" class="col-sm-2 control-label">First
                             Name</label>
                         <div class="col-sm-10" >
-                           <input type="text"
+                           <input th:value="${session.user.firstName}" type="text"
                                 class="form-control" id="firstName" name="firstName"
-                                 placeholder="First Name" th:value="${session.user.firstName}" required="true"></input>
+                                 required="true" ></input>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="lastName" class="col-sm-2 control-label">Last
                             Name</label>
                         <div class="col-sm-10">
-                            <input type="text"
+                            <input th:value="${session.user.firstName}" type="text"
                                 class="form-control" id="lastName" name="lastName"
-                                placeholder="Last Name" th:value="${session.user.lastName}" required="true"></input>
+                                placeholder="Last Name" required="true"></input>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="email" class="col-sm-2 control-label">Email
                             Address</label>
                         <div class="col-sm-10">
-                            <input type="email" 
+                            <input th:value="${session.user.email}" type="email" 
                                 class="form-control" id="email" name="email"
-                                placeholder="user@example.com" th:value="${session.user.email}" required="true"></input>
+                                placeholder="user@example.com" required="true"></input>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="addressline1" class="col-sm-2 control-label">Address Line 1
                             </label>
                         <div class="col-sm-10">
-                            <input type="text"
+                            <input th:value="${session.user.addressline1}" type="text"
                                 class="form-control" id="addressline1" name="addressline1"
-                                placeholder="123 Anywhere Street" th:value="${session.user.addressline1}"></input>
+                                placeholder="123 Anywhere Street"></input>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="addressline2" class="col-sm-2 control-label">Address Line 2
                             </label>
                         <div class="col-sm-10">
-                            <input type="text"
+                            <input th:value="${session.user.addressline2}" type="text"
                                 class="form-control" id="addressline2" name="addressline2"
-                                placeholder="Apartment C" th:value="${session.user.addressline2}"></input>
+                                ></input>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="city" class="col-sm-2 control-label">City</label>
                         <div class="col-sm-10">
-                            <input type="text"
+                            <input th:value="${session.user.city}" type="text"
                                 class="form-control" id="city" name="city"
-                                placeholder="City" th:value="${session.user.city}"required="true"></input>
+                                placeholder="City" required="true"></input>
                         </div>
                     </div>
                      <div class="form-group">
                         <label for="state" class="col-sm-2 control-label">State</label>
                         <div class="col-sm-10">
-                            <input type="text"
+                            <input th:value="${session.user.state}" type="text"
                                 class="form-control" id="state" name="state"
-                                placeholder="State" th:value="${session.user.state}" required="true"></input>
+                                placeholder="State" required="true"></input>
                         </div>
                     </div>
                      <div class="form-group">
                         <label for="zipcode" class="col-sm-2 control-label">Zip Code</label>
                         <div class="col-sm-10">
-                            <input type="text"
+                            <input th:value="${session.user.zipcode}" type="text"
                                 class="form-control" id="zipcode" name="city"
-                                placeholder="Zip Code" th:value="${session.user.zipcode}" required="true"></input>
+                                placeholder="Zip Code" required="true"></input>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="password" class="col-sm-2 control-label">Password</label>
                         <div class="col-sm-10">
-                            <input ng-model="user.password" type="text"
+                            <input th:value="${session.user.password}" type="text"
                                 class="form-control" id="password" name="password"
-                                th:value="${session.user.password}"
                                 aria-describedby="helpBlock" required=""></input> <span
                                 id="helpBlock" class="help-block">Password should be at
                                 least 8 characters, 1 upppercase, 1 lowercase, 1 special
@@ -255,19 +254,21 @@
                     </div>
                   
                     <div class="form-group">
-                       <div class="col-sm-offset-2 col-sm-10">
-                            <span><button
-                                   ng-click="updateUser(user.userId)" id="updateUserButton" type="submit"
-                                   class="btn btn-default">Update User</button></span>
-                       </div>
-                   </div>
+                        <div class="col-sm-offset-2 col-sm-10">
+                             <span>
+                             	<button ng-click="updateUser(user.userId)" id="updateUserButton" type="submit 
+                               	class="btn btn-default">Update User</button>
+                             </span>
+                        </div>
+                    </div>
                 </form>
+
 			</div>
 		</div>
 	</div>
 </div>
 
-</div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -377,7 +378,7 @@ app.controller('UserCtrl', ['$scope', 'UserService', '$mdDialog',
             });
           
         };
-        
+
 	}]
 )
 </script>
