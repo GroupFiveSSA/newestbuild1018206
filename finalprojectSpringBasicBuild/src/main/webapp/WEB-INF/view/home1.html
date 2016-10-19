@@ -318,17 +318,29 @@
 
 										<tr>
 											<td style="width: 30%">User Email:</td>
-											<td><input id="email" name="email" type="text"
-												class="form-control" placeholder="E-mail"></td>
+											<td><input id="email" name="email" type="email" ng-model="email"
+												class="form-control" placeholder="Email" required>
+												<div ng-messages="loginForm.email.$error"
+													ng-if="loginForm.email.$dirty">
+													<div ng-message="required">This field is required</div>
+													<div ng-message="email">Please enter a valid email</div>
+												</div>
+												</td>
 										</tr>
 
-										<span>First Name Must be At Least 4 Characters</span>
 										<br>
 										<br>
 										<tr>
 											<td style="width: 30%">Password:</td>
-											<td><input id="password" name="password" type="text"
-												class="form-control" placeholder="Password"></td>
+											<td><input id="password" name="password" type="password" ng-model="password"
+												class="form-control" placeholder="Password" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%\^\&*\)\(+=._-])[0-9a-zA-Z!@#\$%\^\&*\)\(+=._-]{8,}$/"required>
+												<div ng-messages="loginForm.password.$error"
+													ng-if="loginForm.password.$dirty">
+													<div ng-message="required">This field is required</div>
+													<div ng-message="pattern">Please enter a valid
+													password</div>
+												</div>
+												</td>
 
 										</tr>
 
@@ -336,7 +348,7 @@
 									</table>
 									<br>
 									<center>
-										<button type="submit" class="btn btn-success">Submit</button>
+										<button type="submit" class="btn btn-success" ng-disabled="loginForm.$invalid">Submit</button>
 									</center>
 
 								</form>
