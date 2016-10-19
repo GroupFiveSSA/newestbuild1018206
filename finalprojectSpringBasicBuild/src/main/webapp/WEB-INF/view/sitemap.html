@@ -78,12 +78,12 @@
                    <li>
                        <a th:if="${session.user != null}" href="/PostLoginPageforWidgets.html" style="color: white">HUD Locator</a>
                    </li>
-                   <li>
-                       <a th:if="${session.user != null}" href="/manageprofile.html" style="color: white">Manage Profile</a>
-                   </li>
+                    <li>
+                    	<a href="#" id="linkThatOpensModal">Manage Profile</a>
+                    </li>
                     <li>
                        <a th:if="${session.user != null && session.user.email == 'admin@banr.gov'}" href="/admin.html" style="color: white">Administration</a>
-                   </li>
+                   </li>                                  
                    <li>
                        <a th:if="${session.user != null}" href="/userLogout" style="color: white">Logout</a>
                    </li>

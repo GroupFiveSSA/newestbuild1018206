@@ -47,7 +47,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="/icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"> <img
+				<a class="navbar-brand" href="/home1"> <img
 					src="images/handholding.jpg" align="middle" alt=""
 					style="width: 60px; height: 60px;">
 				</a>
@@ -56,7 +56,7 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1" align="right" color="white">
 				<ul class="nav navbar-nav">
-					<li>
+					 <li>
                        <a href="/about.html" style="color: white">About</a>
                    </li>
                    <li>
@@ -68,12 +68,12 @@
                    <li>
                        <a th:if="${session.user != null}" href="/PostLoginPageforWidgets.html" style="color: white">HUD Locator</a>
                    </li>
-                   <li>
-                       <a th:if="${session.user != null}" href="/manageprofile.html" style="color: white">Manage Profile</a>
-                   </li>
+                    <li>
+                    	<a th:if="${session.user != null}"href="#" id="linkThatOpensModal" style="color: white">Manage Profile</a>
+                    </li>
                     <li>
                        <a th:if="${session.user != null && session.user.email == 'admin@banr.gov'}" href="/admin.html" style="color: white">Administration</a>
-                   </li>
+                   </li>                                  
                    <li>
                        <a th:if="${session.user != null}" href="/userLogout" style="color: white">Logout</a>
                    </li>
