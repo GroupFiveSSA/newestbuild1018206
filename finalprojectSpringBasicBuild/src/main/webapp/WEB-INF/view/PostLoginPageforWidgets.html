@@ -24,28 +24,39 @@
     href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous"></link>
+
+    <!-- Style Sheet Calls -->
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.jqueryui.min.css">
+    
+    <!--Loads the jQuery library-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.jqueryui.min.js"></script>
 <!-- Angular Material style sheet -->
     
- <!--Google Maps Call (might need to move this or change something, mainly with the callback portion at the end)-->
+ <!--Google Maps Call-->
   <script defer 
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBglBmUK-v4u4sdJdQnljxl_wwsNu_12w">      
   </script>
   
    <style type="text/css">
 
-  #localmap {
-    border: 1px solid black; 
-    float: right;
-    width: 1300px;
-    height: 800px; 
-  }
-   .localcontainer {
-     border: 2px solid;
-    border-radius: 25px;
-    float: left;
-    width: 500px;
-    padding-left: 20px;
-  }
+    #localmap {
+        border: 1px solid black;
+        border-radius: 10px; 
+        width: 1200px;
+        height: 800px; 
+        margin-right: 10px;
+        margin-top: 10px;
+      }
+    .localcontainer {
+        float: left;
+        width: 600px;
+      }
+    #tableid td {
+        width: 50%;
+      }
 </style>
 
 
@@ -136,14 +147,23 @@
 			</div>
   
 		</div>
-	<!--Container 1: main container for formated JSON data from HUD Api-->
-    <div class="localcontainer"></div>    
-    <!--Container 2: embedded map-->    
-    <div id="localmap"></div> 
-	</div>
-	
 
-	
+
+<!-- DataTable Container -->
+ <div class="localcontainer">
+    <table id="example" class="display" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th>Locations</th>        
+        </tr>
+      </thead>
+      <!--Container 1: main container for formated JSON data from HUD Api-->  
+      <tbody id="tableContainer"></tbody>   
+    </table>
+  </div>
+  <!--Container 2: embedded map-->  
+  <div id="localmap"></div>      
+
 
 
 <!-- Footer -->
@@ -383,87 +403,14 @@ app.controller('UserCtrl', ['$scope', 'UserService', '$mdDialog',
 </script>
 
 
-   
-    <script>
-    
-    function mapfunction(){
-    var map;
-    var lat = "";
-    var long = "";
-    var hudLatLong = lat, long;
-    var agency = "";
-    var city = "";//document.getElementById("hudcity").value;
-    var state = document.getElementById("hudstate").value;//document.getElementById("form-user-info").elements[6].value;
-    var rowlimit = "";
-    var services = "";
-    var language = "";
-    var index = 0;
-    var marker;
-    var map;
-    //Main function
-    $(function(){
-      var mapOptions = {
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        mapTypeControl: false
-      };
-        map = new google.maps.Map(document.getElementById('localmap'), mapOptions);
-        var bounds = new google.maps.LatLngBounds();
-           
-        //this GET uses hard coded search information
-        //will need to develop a variable based url to pass to the api containing user info from DB
-        $.get( "https://cors-anywhere.herokuapp.com/http://data.hud.gov/Housing_Counselor/search?AgencyName="+ agency +"&City="+ city +"&State="+ state +"&RowLimit="+ rowlimit +"&Services="+ services +"&Languages="+ language, 
-        
-        //Start of display function
-         function( data ) {
-         
-          //Start of array loop
-          $.each(data, function(index, value){
-            //Variables used to parse and format JSON objects returned from HUD Api utilizing JSON Array index assignments
-            
-            var lat = data[index].agc_ADDR_LATITUDE;
-            var long = data[index].agc_ADDR_LONGITUDE;
-            
-            if (lat != null && long != null){
-              if (lat != 0 && long != 0){
-            var hudLatLong = new google.maps.LatLng(lat, long);
-            bounds.extend(hudLatLong);
-            //console.log(index);
-            //Creates individual DIV containers for each formatted JSON array object returned from HUD Api. .container routs each new DIV to Container #1 above.
-            $(".localcontainer").append("<div id=" + index + "></div>");                            
-                
-                //display all info from the above GET statement
-            
-                $("#"+index).html("<br><strong>" + data[index].nme + "</strong><br>Location ID: " + data[index].agcid + "<br>" + data[index].adr1 + "<br>" + data[index].adr2 + "<br>" + data[index].city + " " + data[index].state_NME + ", " + data[index].mailingzipcd + "<br>" + "Phone Number: " + data[index].phone1 + "<br>" + "Fax Number" + data[index].fax + "<br>" + "E-Mail: " + data[index].email + "<br>" + "Web Address: " + data[index].weburl + "<br>" + lat + " - " + long + "<br><br>")
-          
-                //embeded map function that needs user location data and HUD service MDation data           
-          
-                marker = new google.maps.Marker({
-                 position: hudLatLong,
-                  //Displyed results when hovering on marker. look into replacing with google.maps.InfoWindow 
-                   title: "Location ID: " + data[index].agcid + "\n" +
-                      data[index].nme + "\n" +
-                      data[index].adr1 + "\n" + 
-                      data[index].adr2 + "\n" + 
-                      data[index].city + " " + data[index].state_NME + ", " + data[index].mailingzipcd + "\n" +
-                      "Phone Number: " + data[index].phone1 + "\n" +
-                      "Fax Number" + data[index].fax + "\n" +
-                      "E-Mail: " + data[index].email + "\n" +
-                      "Web Address: " + data[index].weburl,
-                  map: map
-             
-                });//End of Google maps marker        
-            }};
-          })//End of Array loop
-          map.fitBounds(bounds);        
-        }, "json")//End of Display function         
-      })//End of Main function (GET) 
- 
-    }
-    
+<!--Script containing both HUD and Google Maps api calls and other data fetching-->   
+<script src="../../js/mapandloc.js">
+
     if($("#hudstate").val() !== ""){
     	mapfunction()
     }
-    </script>
+</script>
+
 </body>
 
 </html>

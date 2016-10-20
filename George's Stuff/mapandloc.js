@@ -8,7 +8,7 @@
     var hudLatLong = lat, long;
     var agency = "";
     var city = "";
-    var state = "MD";
+    var state = document.getElementById("hudstate").value;
     var rowlimit = "";
     var services = "";
     var language = "";
