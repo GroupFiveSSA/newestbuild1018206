@@ -66,11 +66,27 @@
                 <br> <br> <br> <br> <br>
                 <h2>&nbsp Site Map</h2>
                 <ul>
-                    <li><a href="/about.html">About Us</li>
-                    <li><a href="/home1.html">BANR Login Page</li>
-                    <li><a href="/developercontact.html">Contact</li>
-                    <li><a href="/services.html">Services</li>
-                    <li><a href="/index.html">SSA Login Page</li>
+                    <li>
+                       <a href="/about.html" style="color: white">About</a>
+                   </li>
+                   <li>
+                       <a href="/services.html" style="color: white">Services</a>
+                   </li>
+                   <li>
+                       <a href="/developercontact.html" style="color: white">Contact</a>
+                   </li>
+                   <li>
+                       <a th:if="${session.user != null}" href="/PostLoginPageforWidgets.html" style="color: white">HUD Locator</a>
+                   </li>
+                    <li>
+                    	<a href="#" id="linkThatOpensModal">Manage Profile</a>
+                    </li>
+                    <li>
+                       <a th:if="${session.user != null && session.user.email == 'admin@banr.gov'}" href="/admin.html" style="color: white">Administration</a>
+                   </li>                                  
+                   <li>
+                       <a th:if="${session.user != null}" href="/userLogout" style="color: white">Logout</a>
+                   </li>
                 </ul>
             </div>
         </div>

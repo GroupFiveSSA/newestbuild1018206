@@ -32,7 +32,6 @@
   </script>
   
    <style type="text/css">
-
   #localmap {
     border: 1px solid black; 
     float: right;
@@ -57,47 +56,53 @@
 
 
 <body ng-app="angularApp">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:#002A5C">
-        <div class="container" style="height: 96px">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <img src="../../images/BANR.jpg" align="middle" alt="">
-                </a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" align="right" color="white">
-                <ul class="nav navbar-nav">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"
+		style="background-color: #002A5C">
+		<div class="container" style="height: 66px">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="/icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/home1"> <img
+					src="images/handholding.jpg" align="middle" alt=""
+					style="width: 60px; height: 60px;">
+				</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1" align="right" color="white">
+				<ul class="nav navbar-nav">
+					 <li>
+                       <a href="/about.html" style="color: white">About</a>
+                   </li>
+                   <li>
+                       <a href="/services.html" style="color: white">Services</a>
+                   </li>
+                   <li>
+                       <a href="/developercontact.html" style="color: white">Contact</a>
+                   </li>
+                   <li>
+                       <a th:if="${session.user != null}" href="/PostLoginPageforWidgets.html" style="color: white">HUD Locator</a>
+                   </li>
                     <li>
-                        <a href="#">About</a>
+                    	<a th:if="${session.user != null}"href="#" id="linkThatOpensModal" style="color: white">Manage Profile</a>
                     </li>
                     <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                    <li>
-                    	<a href="#" id="linkThatOpensModal">Manage Profile</a>
-                    </li>                    	
-                    <li>
-                    	<a href="#" >Logout</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
+                       <a th:if="${session.user != null && session.user.email == 'admin@banr.gov'}" href="/admin.html" style="color: white">Administration</a>
+                   </li>                                  
+                   <li>
+                       <a th:if="${session.user != null}" href="/userLogout" style="color: white">Logout</a>
+                   </li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
     <!-- Page Content -->
     
 
@@ -115,7 +120,7 @@
                         <div class="col-sm-10">
                             <input ng-model="hudcity" type="text"
                                 class="form-control" id="hudcity" name="hudcity"
-                                placeholder="City"></input>
+                                placeholder="City" th:value="${session.user.city}"></input>
                         </div>
                     </div>
                      <div class="form-group">
@@ -171,77 +176,76 @@
                         <label for="firstName" class="col-sm-2 control-label">First
                             Name</label>
                         <div class="col-sm-10" >
-                           <input type="text"
+                           <input th:value="${session.user.firstName}" type="text"
                                 class="form-control" id="firstName" name="firstName"
-                                 placeholder="First Name" th:value="${session.user.firstName}" required="true"></input>
+                                 required="true" ></input>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="lastName" class="col-sm-2 control-label">Last
                             Name</label>
                         <div class="col-sm-10">
-                            <input type="text"
+                            <input th:value="${session.user.firstName}" type="text"
                                 class="form-control" id="lastName" name="lastName"
-                                placeholder="Last Name" th:value="${session.user.lastName}" required="true"></input>
+                                placeholder="Last Name" required="true"></input>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="email" class="col-sm-2 control-label">Email
                             Address</label>
                         <div class="col-sm-10">
-                            <input type="email" 
+                            <input th:value="${session.user.email}" type="email" 
                                 class="form-control" id="email" name="email"
-                                placeholder="user@example.com" th:value="${session.user.email}" required="true"></input>
+                                placeholder="user@example.com" required="true"></input>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="addressline1" class="col-sm-2 control-label">Address Line 1
                             </label>
                         <div class="col-sm-10">
-                            <input type="text"
+                            <input th:value="${session.user.addressline1}" type="text"
                                 class="form-control" id="addressline1" name="addressline1"
-                                placeholder="123 Anywhere Street" th:value="${session.user.addressline1}"></input>
+                                placeholder="123 Anywhere Street"></input>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="addressline2" class="col-sm-2 control-label">Address Line 2
                             </label>
                         <div class="col-sm-10">
-                            <input type="text"
+                            <input th:value="${session.user.addressline2}" type="text"
                                 class="form-control" id="addressline2" name="addressline2"
-                                placeholder="Apartment C" th:value="${session.user.addressline2}"></input>
+                                ></input>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="city" class="col-sm-2 control-label">City</label>
                         <div class="col-sm-10">
-                            <input type="text"
+                            <input th:value="${session.user.city}" type="text"
                                 class="form-control" id="city" name="city"
-                                placeholder="City" th:value="${session.user.city}"required="true"></input>
+                                placeholder="City" required="true"></input>
                         </div>
                     </div>
                      <div class="form-group">
                         <label for="state" class="col-sm-2 control-label">State</label>
                         <div class="col-sm-10">
-                            <input type="text"
+                            <input th:value="${session.user.state}" type="text"
                                 class="form-control" id="state" name="state"
-                                placeholder="State" th:value="${session.user.state}" required="true"></input>
+                                placeholder="State" required="true"></input>
                         </div>
                     </div>
                      <div class="form-group">
                         <label for="zipcode" class="col-sm-2 control-label">Zip Code</label>
                         <div class="col-sm-10">
-                            <input type="text"
+                            <input th:value="${session.user.zipcode}" type="text"
                                 class="form-control" id="zipcode" name="city"
-                                placeholder="Zip Code" th:value="${session.user.zipcode}" required="true"></input>
+                                placeholder="Zip Code" required="true"></input>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="password" class="col-sm-2 control-label">Password</label>
                         <div class="col-sm-10">
-                            <input ng-model="user.password" type="text"
+                            <input th:value="${session.user.password}" type="text"
                                 class="form-control" id="password" name="password"
-                                th:value="${session.user.password}"
                                 aria-describedby="helpBlock" required=""></input> <span
                                 id="helpBlock" class="help-block">Password should be at
                                 least 8 characters, 1 upppercase, 1 lowercase, 1 special
@@ -250,20 +254,23 @@
                     </div>
                   
                     <div class="form-group">
-                       <div class="col-sm-offset-2 col-sm-10">
-                            <span
-                               ><button
-                                   ng-click="updateUser(user.userId)" id="updateUserButton" type="submit"
-                                   class="btn btn-default">Update User</button></span>
-                       </div>
-                   </div>
+
+                        <div class="col-sm-offset-2 col-sm-10">
+                             <span>
+                             	<button ng-click="updateUser('${session.user.userId}')" id="updateUserButton" type="submit 
+                               	class="btn btn-default">Update User</button>
+                             </span>
+                        </div>
+                    </div>
+
                 </form>
+
 			</div>
 		</div>
 	</div>
 </div>
 
-</div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -289,18 +296,14 @@
 		$("#updateUserButton").click(function(){
 			$( "#myModal" ).dialog("close")
 		})
-
 		$("#linkThatOpensModal").click(function(){
 			$( "#myModal" ).dialog({
 				width:700,
-
 				 
 			});
 		})
 	})
-
 				
-
 </script>
 
 
@@ -377,7 +380,7 @@ app.controller('UserCtrl', ['$scope', 'UserService', '$mdDialog',
             });
           
         };
-        
+
 	}]
 )
 </script>
