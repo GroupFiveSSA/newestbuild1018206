@@ -97,7 +97,7 @@ public class UserController {
 	
 	@RequestMapping(value="/userLogout")
 	public ModelAndView userLogout(HttpSession sessionObj, ModelAndView mv){
-		mv.setViewName("home1");
+		mv.setViewName("home");
 		sessionObj.invalidate();
 		return mv;
 	}

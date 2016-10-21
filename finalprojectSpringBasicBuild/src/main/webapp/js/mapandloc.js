@@ -30,7 +30,7 @@
 		    var map;
 
 		    //Variables for div injection
-		    var divdis = '" border: 1px solid; border-radius: 5px; margin-left: 10px; margin-top: 0px;"';
+		    var divdis = '" border: 1px solid; border-radius: 5px; margin-left: 10px; margin-top: 0px; background-color: white;"';
 		    var classname = '"locationItem"';
 
 	      //Google Maps options and call
