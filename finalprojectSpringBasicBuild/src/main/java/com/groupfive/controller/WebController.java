@@ -91,14 +91,14 @@ public class WebController {
 	}//endModelAndView services
 
 
-	@RequestMapping("/PostLoginPageforWidgets")
-    public ModelAndView PostLoginPageforWidgets(HttpServletRequest request, ModelAndView mv){
+	@RequestMapping("/hudlocator")
+    public ModelAndView hudlocator(HttpServletRequest request, ModelAndView mv){
 //        if(request.getParameter("name") != null){
 //            mv.addObject("name", request.getParameter("name"));
 //        }//end if statement
-        mv.setViewName("PostLoginPageforWidgets");
+        mv.setViewName("hudlocator");
         return mv;
-    }//endModelAndView PostLoginPageforWidgets
+    }//endModelAndView hudlocator
 
 	@RequestMapping("/sandbox")
     public ModelAndView sandbox(HttpServletRequest request, ModelAndView mv){
