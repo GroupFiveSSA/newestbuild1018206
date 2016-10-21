@@ -1,93 +1,66 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
+  <head>
+    <title></title>
+    <!-- Style Sheet Calls -->
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.jqueryui.min.css">
+    
+    <!--Loads the jQuery library-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.jqueryui.min.js"></script>
+  
+    <!--Google Maps Call-->
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBglBmUK-v4u4sdJdQnljxl_wwsNu_12w"></script>
 
-<!--Simple formatting just for demo.-->	
-<style type="text/css">
-  html, body { 
-  	height: 100%; 
-  	margin: 0; 
-  	padding: 0; 
-  }
-  #map {
-  	border: 1px solid black; 
-  	float: right;
-  	width: 500px;
-  	height: 500px; 
-  }
-  #info1 {
-  	float: left;
-  }
-</style>
+    <!--Simple local formatting-->   
+    <style type="text/css">
+      html, body { 
+        height: 100%; 
+        margin: 0; 
+        padding: 0; 
+      }
+     
+      #localmap {
+        border: 1px solid black;
+        border-radius: 10px; 
+        width: 1200px;
+        height: 800px; 
+        margin-right: 10px;
+        margin-top: 10px;
+      }
+      .info1 {
+        float: left;
+      }
+      .localcontainer {
+        float: left;
+        width: 600px;
+      }
+      #tableid td {
+        width: 50%;
+      }
 
-</head>
+    </style>
+  </head>
 
 <body>
-
-
-    <!--Container 1: formatted HUD return data-->
- 	  <div id="info1"></div>
-
-    <!--Container 2: embedded map-->
-    <div id="map"></div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-    <script>
-    var map;
-    var lat = "";
-    var long = "";
-    var hudLatLong = lat, long;
-    $(function(){
-        //this GET uses hard coded search information
-        //will need to develop a variable based url to pass to the api containing user info from DB
-		    $.get( "https://cors-anywhere.herokuapp.com/http://data.hud.gov/Housing_Counselor/search?AgencyName=&City=joppa&State=MD&RowLimit=&Services=&Languages=", 
-        function( data ) {
-          var lat = data[0].agc_ADDR_LATITUDE;
-          var long = data[0].agc_ADDR_LONGITUDE;
-          
-		        //display all info from the above GET statement
-		        $("#info1").html("Location ID: " + data[0].agcid + "<br>" + data[0].nme + "<br>" + data[0].adr1 + "<br>" + data[0].adr2 + "<br>" + data[0].city + " " + data[0].state_NME + ", " + data[0].mailingzipcd + "<br>" + "Phone Number: " + data[0].phone1 + "<br>" + "Fax Number" + data[0].fax + "<br>" + "E-Mail: " + data[0].email + "<br>" + "Web Address: " + data[0].weburl + "<br>" + lat + " - " + long + "<br><br>")
-          //embeded map function that needs user location data and HUD service location data  
-          $(function initialize() {
-            var hudLatLong = new google.maps.LatLng(lat, long);
-            var mapOptions = {
-              center: hudLatLong,
-              zoom: 8,
-              mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-            
-            var marker = new google.maps.Marker({
-              position: hudLatLong,
-              //Displyed results when hovering on marker
-              title: "Location ID: " + data[0].agcid + "\n" +
-                      data[0].nme + "\n" +
-                      data[0].adr1 + "\n" + 
-                      data[0].adr2 + "\n" + 
-                      data[0].city + " " + data[0].state_NME + ", " + data[0].mailingzipcd + "\n" +
-                      "Phone Number: " + data[0].phone1 + "\n" +
-                      "Fax Number" + data[0].fax + "\n" +
-                      "E-Mail: " + data[0].email + "\n" +
-                      "Web Address: " + data[0].weburl,
-              //map: map
-            });
-            //Creats a pin at above location on embedded Google Map
-            marker.setMap(map);
-          })//Embedded map
-		    }, "json" )//Display function  
-		 });//Main function 
- 
+<!-- DataTable Container -->
+ <div class="localcontainer">
+    <table id="example" class="display" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th>Locations</th>        
+        </tr>
+      </thead>
+      <!--Container 1: main container for formated JSON data from HUD Api-->  
+      <tbody id="tableContainer"></tbody>   
+    </table>
+  </div>
+  <!--Container 2: embedded map-->  
+  <div id="localmap"></div>      
+<!--Script containing both HUD and Google Maps api calls and other data fetching-->
+<script src="mapandloc.js"></script>
    
-    </script>
-    <!--Google Maps Call-->
-    <script src="https://maps.googleapis.com/maps/api/js?
-    key=AIzaSyDBglBmUK-v4u4sdJdQnljxl_wwsNu_12w
-    &callback=initMap"
-    async defer>
-    	
-    </script>
-
 </body>
 </html>
