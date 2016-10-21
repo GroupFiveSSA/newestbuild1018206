@@ -7,26 +7,25 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Contact</title>
-<!-- JQuery -->
-<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<!-- Bootstrap Core CSS -->
-<link href="../../css/bootstrap.min.css" rel="stylesheet">
-<!-- Custom CSS -->
-<link href="../../css/small-business.css" rel="stylesheet">
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-<link rel="stylesheet"
+<!-- Modal Jquery -->
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"></link>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet"></link>
+
+    <!-- Custom CSS -->
+    <link href="../../css/small-business.css" rel="stylesheet"></link>
+    
+    <link rel="stylesheet"
     href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous"></link>
 <!-- Angular Material style sheet -->
-<link rel="stylesheet"
-    href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css"></link>
+    
+ <!--Google Maps Call (might need to move this or change something, mainly with the callback portion at the end)-->
+  <script defer 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBglBmUK-v4u4sdJdQnljxl_wwsNu_12w">      
+  </script>
 </head>
 <body ng-app="angularApp">
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"
@@ -61,8 +60,8 @@
                    <li>
                        <a th:if="${session.user != null}" href="/hudlocator" style="color: white">HUD Locator</a>
                    </li>
-                    <li>
-                        <a th:if="${session.user != null}"href="#" id="linkThatOpensModal" style="color: white">Manage Profile</a>
+                     <li>
+                        <a th:if="${session.user != null && session.user.email != 'admin@banr.gov'}"href="#" id="linkThatOpensModal" style="color: white">Manage Profile</a>
                     </li>
                     <li>
                        <a th:if="${session.user != null && session.user.email == 'admin@banr.gov'}" href="/admin" style="color: white">Administration</a>
@@ -152,9 +151,121 @@
             </div>
         </div>
     </footer>
-    </script>
+<div style="display:none" "background-color:#002A5C" "color:white" id="myModal" title="Update Profile" th:if="${session.user} != null">
+	
+
+<div class="panel panel-info" >
+	
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-3 col-lg-3 " align="center">
+			</div>
+			<div class=" col-md-9 col-lg-9 " ng-controller="UserCtrl"> 
+			<form class="form-horizontal" id="form-user-info">
+                    <div class="form-group">
+                        <label for="firstName" class="col-sm-2 control-label">First
+                            Name</label>
+                        <div class="col-sm-10" >
+                           <input th:value="${session.user.firstName}" type="text"
+                                class="form-control" id="firstName" name="firstName"
+                                 required="true" ></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" class="col-sm-2 control-label">Last
+                            Name</label>
+                        <div class="col-sm-10">
+                            <input th:value="${session.user.firstName}" type="text"
+                                class="form-control" id="lastName" name="lastName"
+                                placeholder="Last Name" required="true"></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-sm-2 control-label">Email
+                            Address</label>
+                        <div class="col-sm-10">
+                            <input th:value="${session.user.email}" type="email" 
+                                class="form-control" id="email" name="email"
+                                placeholder="user@example.com" required="true"></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="addressline1" class="col-sm-2 control-label">Address Line 1
+                            </label>
+                        <div class="col-sm-10">
+                            <input th:value="${session.user.addressline1}" type="text"
+                                class="form-control" id="addressline1" name="addressline1"
+                                placeholder="123 Anywhere Street"></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="addressline2" class="col-sm-2 control-label">Address Line 2
+                            </label>
+                        <div class="col-sm-10">
+                            <input th:value="${session.user.addressline2}" type="text"
+                                class="form-control" id="addressline2" name="addressline2"
+                                ></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="city" class="col-sm-2 control-label">City</label>
+                        <div class="col-sm-10">
+                            <input th:value="${session.user.city}" type="text"
+                                class="form-control" id="city" name="city"
+                                placeholder="City" required="true"></input>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="state" class="col-sm-2 control-label">State</label>
+                        <div class="col-sm-10">
+                            <input th:value="${session.user.state}" type="text"
+                                class="form-control" id="state" name="state"
+                                placeholder="State" required="true"></input>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="zipcode" class="col-sm-2 control-label">Zip Code</label>
+                        <div class="col-sm-10">
+                            <input th:value="${session.user.zipcode}" type="text"
+                                class="form-control" id="zipcode" name="city"
+                                placeholder="Zip Code" required="true"></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">Password</label>
+                        <div class="col-sm-10">
+                            <input th:value="${session.user.password}" type="text"
+                                class="form-control" id="password" name="password"
+                                aria-describedby="helpBlock" required=""></input> <span
+                                id="helpBlock" class="help-block">Password should be at
+                                least 8 characters, 1 upppercase, 1 lowercase, 1 special
+                                character, and one number</span>
+                        </div>
+                    </div>
+                  
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                             <span>
+                             	<button ng-click="updateUser('${session.user.userId}')" id="updateUserButton" type="submit 
+                               	class="btn btn-default">Update User</button>
+                             </span>
+                        </div>
+                    </div>
+                </form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    
     <script
-        src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+        src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js">
+        
+    </script>
     <script
         src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-resource.js"></script>
     <script
@@ -167,6 +278,101 @@
     <script
         src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
     <script type="text/javascript"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js">
+    </script>
+    
+    <script type="text/javascript">
+	
+	$(function(){
+		
+		$("#updateUserButton").click(function(){
+			$( "#myModal" ).dialog("close")
+		})
+		$("#linkThatOpensModal").click(function(){
+			$( "#myModal" ).dialog({
+				width:700,
+				 
+			});
+		})
+	})
+				
+</script>
+
+ <script type="text/javascript">
+var app = angular.module('angularApp', ['ngResource', 'ngMaterial']);
+app.factory('UserService', ['$resource', function ($resource) {
+    return $resource(
+        'http://localhost:8080/user/:userId',
+        {userId: '@uid'},
+        {update: {method: 'PUT'}}
+    );
+}]);
+app.controller('UserCtrl', ['$scope', 'UserService', '$mdDialog',
+    function($scope, UserService, $mdDialog) {
+        $scope.users = [];
+        $scope.user  = new UserService();
+        $scope.action = "Add";
+        $scope.addFlag = true;
+        $scope.editFlag = false;
+        $scope.getAllUsers = function(){
+            $scope.users = UserService.query()
+        }
+        $scope.getAllUsers();
+        $scope.deleteUser = function(id){
+            $scope.user = UserService.delete({ userId: id},
+                function() {
+                    $scope.user = new UserService();
+                    $scope.getAllUsers(); 
+                });
+        }
+        $scope.addUser = function(){
+          $scope.user.$save(
+              function(user){ 
+                 $scope.user = new UserService();
+                 $scope.getAllUsers();
+                 $mdDialog.hide();
+              },
+              function(err){
+                 console.log(err.status);
+              }
+          );     
+        }; 
+        $scope.editUser = function(id){
+            $scope.user = UserService.get({ userId: id}, function() { 
+                $scope.showForm();
+                $scope.action = "Update"
+                $scope.addFlag = false;
+                $scope.editFlag = true;
+            });
+        };  
+        $scope.updateUser = function(id){
+            $scope.user.$update({ userId: id},
+                function(user){
+                $scope.getAllUsers();
+                    
+                }
+            )
+        };
+        $scope.addButtonClick = function(){
+            $scope.showForm();
+            $scope.user = new UserService();
+            $scope.addFlag = true;
+            $scope.editFlag = false;
+            $scope.action = "Add";
+        }
+        $scope.showForm = function(ev) {
+            $mdDialog.show({
+              contentElement: '#userForm',
+              parent: angular.element(document.body),
+              targetEvent: ev,
+              clickOutsideToClose: true
+            });
+          
+        };
+
+	}]
+)
+</script>
 </body>
 </html>
