@@ -48,9 +48,27 @@
             <div class="collapse navbar-collapse"
                 id="bs-example-navbar-collapse-1" align="right" color="white">
                 <ul class="nav navbar-nav">
-                    <li><a href="/about.html" style="color: white">About</a></li>
-                    <li><a href="/services.html" style="color: white">Services</a></li>
-                    <li><a href="/developercontact.html" style="color: white">Contact</a></li>
+                     <li>
+                       <a href="/about" style="color: white">About</a>
+                   </li>
+                   <li>
+                       <a href="/services" style="color: white">Services</a>
+                   </li>
+                   <li>
+                       <a href="/developercontact" style="color: white">Contact</a>
+                   </li>
+                   <li>
+                       <a th:if="${session.user != null}" href="/hudlocator" style="color: white">HUD Locator</a>
+                   </li>
+                    <li>
+                      <a th:if="${session.user != null}"href="#" id="linkThatOpensModal" style="color: white">Manage Profile</a>
+                    </li>
+                    <li>
+                       <a th:if="${session.user != null && session.user.email == 'admin@banr.gov'}" href="/admin" style="color: white">Administration</a>
+                   </li>                                  
+                   <li>
+                       <a th:if="${session.user != null}" href="/userLogout" style="color: white">Logout</a>
+                   </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

@@ -87,7 +87,7 @@ public class UserController {
 				
 				
 				sessionObj.setAttribute("user", success.get(0));
-				mv.setViewName("PostLoginPageforWidgets");
+				mv.setViewName("hudlocator");
 				
 				return mv;
 				
