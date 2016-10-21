@@ -118,12 +118,12 @@
 					<div class="alert alert-danger" th:if="${session.error != null}"
 						th:text="${session.error}">Error if exists</div>
 					<button ng-click="loginButtonClick()" class="btn btn-primary">Login</button>
-					<button ng-click="addButtonClick()" class="btn btn-primary">Register</button>
+					<button ng-click="addButtonClick()" class="btn btn-primary">Register</button><br><br>
 
 
 
 					<div style="display: none">
-						<div class="md-dialog-container" id="userForm">
+						<div class="md-dialog-container" id="userForm" style="width:45%">
 
 							<md-dialog>
 							<div style="background-color: #002A5C; color: white">
@@ -136,7 +136,7 @@
 
 
 							<div style="background-color: #002A5C; color: white">
-								<form id="userForm" name="userForm" class="form-horizontal">
+								<form id="userForm" name="userForm" class="form-horizontal" style="margin-left:25%">
 									<div class="form-group">
 										<br>
 										<br> <label for="firstName"
@@ -317,11 +317,12 @@
 							<div ng-app="">
 								<form method="POST" action="/userLogin" id="loginForm"
 									name="loginForm"
-									style="width: 100%; padding: 6px; background-color: #002A5C; color: white">
+									style="width: 100%; padding: 16px; background-color: #002A5C; color: white">
 
 									<table id="fntable">
 										<center>
-											<h3>Login</h3>
+											<h3><img src="../imgs/icons/handholding.jpg"
+										style="width: 30px; height: 30px; align-text: center">Login</h3>
 										</center>
 
 										<tr>
