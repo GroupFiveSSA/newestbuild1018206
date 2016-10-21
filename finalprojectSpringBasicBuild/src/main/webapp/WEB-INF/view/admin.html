@@ -11,7 +11,7 @@
 
     <title>User Account Page - BANR</title>
 
-    <!-- Modal Jquery -->
+<!-- Modal Jquery -->
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"></link>
 
     <!-- Bootstrap Core CSS -->
@@ -24,6 +24,12 @@
     href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous"></link>
+<!-- Angular Material style sheet -->
+    
+ <!--Google Maps Call (might need to move this or change something, mainly with the callback portion at the end)-->
+  <script defer 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBglBmUK-v4u4sdJdQnljxl_wwsNu_12w">      
+  </script>
     
 </head>
 <body ng-app="angularApp">
@@ -60,7 +66,7 @@
                        <a th:if="${session.user != null}" href="/hudlocator" style="color: white">HUD Locator</a>
                    </li>
                     <li>
-                        <a th:if="${session.user != null}"href="#" id="linkThatOpensModal" style="color: white">Manage Profile</a>
+                        <a th:if="${session.user != null && session.user.email != 'admin@banr.gov'}"href="#" id="linkThatOpensModal" style="color: white">Manage Profile</a>
                     </li>
                     <li>
                        <a th:if="${session.user != null && session.user.email == 'admin@banr.gov'}" href="/admin" style="color: white">Administration</a>
@@ -220,9 +226,13 @@
             </div>
         </div>
     </div>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    
     <script
         src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js">
-</script>
+        
+    </script>
     <script
         src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-resource.js"></script>
     <script
@@ -234,7 +244,29 @@
     <!-- Angular Material Library -->
     <script
         src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+    <script type="text/javascript"></script>
+    <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js">
+    </script>
+    
     <script type="text/javascript">
+	
+	$(function(){
+		
+		$("#updateUserButton").click(function(){
+			$( "#myModal" ).dialog("close")
+		})
+		$("#linkThatOpensModal").click(function(){
+			$( "#myModal" ).dialog({
+				width:700,
+				 
+			});
+		})
+	})
+				
+</script>
+
+ <script type="text/javascript">
 var app = angular.module('angularApp', ['ngResource', 'ngMaterial']);
 app.factory('UserService', ['$resource', function ($resource) {
     return $resource(
@@ -284,9 +316,8 @@ app.controller('UserCtrl', ['$scope', 'UserService', '$mdDialog',
         $scope.updateUser = function(id){
             $scope.user.$update({ userId: id},
                 function(user){
-                    $scope.user = new UserService();
-                    $scope.getAllUsers();
-                    $mdDialog.hide();
+                $scope.getAllUsers();
+                    
                 }
             )
         };
@@ -306,7 +337,7 @@ app.controller('UserCtrl', ['$scope', 'UserService', '$mdDialog',
             });
           
         };
-        
+
 	}]
 )
 </script>

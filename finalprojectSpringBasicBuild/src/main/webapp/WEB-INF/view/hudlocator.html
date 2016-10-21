@@ -88,8 +88,8 @@ huhudlocator<!DOCTYPE html>
                    <li>
                        <a th:if="${session.user != null}" href="/hudlocator" style="color: white">HUD Locator</a>
                    </li>
-                    <li>
-                    	<a th:if="${session.user != null}"href="#" id="linkThatOpensModal" style="color: white">Manage Profile</a>
+                     <li>
+                        <a th:if="${session.user != null && session.user.email != 'admin@banr.gov'}"href="#" id="linkThatOpensModal" style="color: white">Manage Profile</a>
                     </li>
                     <li>
                        <a th:if="${session.user != null && session.user.email == 'admin@banr.gov'}" href="/admin" style="color: white">Administration</a>
