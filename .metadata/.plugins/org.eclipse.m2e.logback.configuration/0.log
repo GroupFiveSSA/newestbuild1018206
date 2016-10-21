@@ -1,0 +1,29 @@
+2016-10-20 15:34:21,001 [Worker-12] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.groupfive:finalProject:1.0-SNAPSHOT @ C:\Users\admin\Final Project\Final Build Complete 10202016\newestbuild1018206\finalprojectSpringBasicBuild\pom.xml.
+2016-10-20 15:34:35,199 [Worker-12] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /finalprojectSpringBasicBuild/src/main/java
+2016-10-20 15:34:35,213 [Worker-12] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /finalprojectSpringBasicBuild/src/test/java
+2016-10-20 15:34:35,528 [Worker-12] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 25 sec
+2016-10-20 15:35:14,972 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-20 15:35:14,972 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\admin\Final Project\Final Build Complete 10202016\newestbuild1018206\finalprojectSpringBasicBuild\src\main\resources
+2016-10-20 15:35:14,972 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\admin\Final Project\Final Build Complete 10202016\newestbuild1018206\finalprojectSpringBasicBuild\src\main\resources
+2016-10-20 15:35:14,974 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-20 15:35:14,974 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\admin\Final Project\Final Build Complete 10202016\newestbuild1018206\finalprojectSpringBasicBuild\src\test\resources
+2016-10-20 16:27:33,197 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-20 16:27:33,197 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\admin\Final Project\Final Build Complete 10202016\newestbuild1018206\finalprojectSpringBasicBuild\src\main\resources
+2016-10-20 16:27:33,197 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\admin\Final Project\Final Build Complete 10202016\newestbuild1018206\finalprojectSpringBasicBuild\src\main\resources
+2016-10-20 16:27:33,199 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-20 16:27:33,199 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\admin\Final Project\Final Build Complete 10202016\newestbuild1018206\finalprojectSpringBasicBuild\src\test\resources
+2016-10-20 16:27:54,612 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-20 16:27:54,612 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\admin\Final Project\Final Build Complete 10202016\newestbuild1018206\finalprojectSpringBasicBuild\src\main\resources
+2016-10-20 16:27:54,615 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\admin\Final Project\Final Build Complete 10202016\newestbuild1018206\finalprojectSpringBasicBuild\src\main\resources
+2016-10-20 16:27:54,617 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-20 16:27:54,618 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\admin\Final Project\Final Build Complete 10202016\newestbuild1018206\finalprojectSpringBasicBuild\src\test\resources
+2016-10-20 16:40:31,226 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-20 16:40:31,239 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\admin\Final Project\Final Build Complete 10202016\newestbuild1018206\finalprojectSpringBasicBuild\src\main\resources
+2016-10-20 16:40:31,239 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\admin\Final Project\Final Build Complete 10202016\newestbuild1018206\finalprojectSpringBasicBuild\src\main\resources
+2016-10-20 16:40:31,242 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-20 16:40:31,242 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\admin\Final Project\Final Build Complete 10202016\newestbuild1018206\finalprojectSpringBasicBuild\src\test\resources
+2016-10-20 16:49:15,540 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-20 16:49:15,541 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\admin\Final Project\Final Build Complete 10202016\newestbuild1018206\finalprojectSpringBasicBuild\src\main\resources
+2016-10-20 16:49:15,542 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\admin\Final Project\Final Build Complete 10202016\newestbuild1018206\finalprojectSpringBasicBuild\src\main\resources
+2016-10-20 16:49:15,543 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-20 16:49:15,543 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\admin\Final Project\Final Build Complete 10202016\newestbuild1018206\finalprojectSpringBasicBuild\src\test\resources
