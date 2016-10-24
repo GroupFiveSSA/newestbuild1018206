@@ -35,20 +35,20 @@
 <body ng-app="angularApp">
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"
 		style="background-color: #002A5C">
-		<div class="container" style="height: 66px">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="/icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/home"> <img
-					src="images/handholding.jpg" align="middle" alt=""
-					style="width: 60px; height: 60px;">
-				</a>
-			</div>
+			<div class="container" style="height: 66px">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="/icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/home"> <img
+						src="images/handholding.jpg" align="middle" alt=""
+						style="width: 60px; height: 60px;">
+					</a>
+				</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1" align="right" color="white">
@@ -126,7 +126,7 @@
                 </tr>
             </tbody>
         </table>
-        <div style="display: none">
+        <div style="">
             <div class="md-dialog-container" id="userForm">
                 <md-dialog>
                 <h2>{{action}} User</h2>
@@ -307,7 +307,7 @@ app.controller('UserCtrl', ['$scope', 'UserService', '$mdDialog',
         }; 
         $scope.editUser = function(id){
             $scope.user = UserService.get({ userId: id}, function() { 
-                $scope.showForm();
+              //  $scope.showForm();
                 $scope.action = "Update"
                 $scope.addFlag = false;
                 $scope.editFlag = true;
@@ -322,7 +322,7 @@ app.controller('UserCtrl', ['$scope', 'UserService', '$mdDialog',
             )
         };
         $scope.addButtonClick = function(){
-            $scope.showForm();
+         //   $scope.showForm();
             $scope.user = new UserService();
             $scope.addFlag = true;
             $scope.editFlag = false;
