@@ -12,7 +12,7 @@
     <title>User Account Page - BANR</title>
 
     
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"></link>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"></link>
 
     <!-- Bootstrap Core CSS -->
     <link href="../../css/bootstrap.min.css" rel="stylesheet"></link>
@@ -71,26 +71,26 @@
 
 <body ng-app="angularApp">
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"
-		style="background-color: #002A5C">
-		<div class="container" style="height: 66px">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="/icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/home"> <img
-					src="images/handholding.jpg" align="middle" alt=""
-					style="width: 60px; height: 60px;">
-				</a>
-			</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1" align="right" color="white">
-				<ul class="nav navbar-nav">
-					 <li>
+    style="background-color: #002A5C">
+    <div class="container" style="height: 66px">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span> <span
+            class="icon-bar"></span> <span class="icon-bar"></span> <span
+            class="/icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/home"> <img
+          src="images/handholding.jpg" align="middle" alt=""
+          style="width: 60px; height: 60px;">
+        </a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse"
+        id="bs-example-navbar-collapse-1" align="right" color="white">
+        <ul class="nav navbar-nav">
+           <li>
                        <a href="/about" style="color: white">About</a>
                    </li>
                    <li>
@@ -111,23 +111,23 @@
                    <li>
                        <a th:if="${session.user != null}" href="/userLogout" style="color: white">Logout</a>
                    </li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container -->
-	</nav>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+  </nav>
     <!-- Page Content -->
     
 
         <hr>
 
 <div class="panel-body">
-		<div class="row">
-			<div class="col-md-3 col-lg-3 " align="center">
-			</div>
-			<div class=" col-md-9 col-lg-9 " > 
-			<form class="form-horizontal">
+    <div class="row">
+      <div class="col-md-3 col-lg-3 " align="center">
+      </div>
+      <div class=" col-md-9 col-lg-9 " > 
+      <form class="form-horizontal">
 
                      <div class="form-group">
                         <label for="state" class="col-sm-2 control-label">State Abbreviation</label>
@@ -136,6 +136,7 @@
                                 class="form-control" id="hudstate" name="hudstate"
                                 placeholder="State"  th:value="${session.user.state}" required="false"></input>
                                 <button id="lookupButton">Enter</button>
+                                <div id="userAddress" style="display: none;" th:value="${session.user.addressline1} + ${session.user.city} + ${session.user.state} + ${session.user.zipcode}"></div>
                         </div>
                     </div>
                     
@@ -144,9 +145,9 @@
                   
 
                 </form>
-			</div>
+      </div>
   
-		</div>
+    </div>
 
 
 <!-- DataTable Container -->
@@ -176,17 +177,17 @@
 </footer>
 
 <div style="display:none" "background-color:#002A5C" "color:white" id="myModal" title="Update Profile">
-	
+  
 
 <div class="panel panel-info" >
-	
-	</div>
-	<div class="panel-body">
-		<div class="row">
-			<div class="col-md-3 col-lg-3 " align="center">
-			</div>
-			<div class=" col-md-9 col-lg-9 " ng-controller="UserCtrl"> 
-			<form class="form-horizontal" id="form-user-info">
+  
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-3 col-lg-3 " align="center">
+      </div>
+      <div class=" col-md-9 col-lg-9 " ng-controller="UserCtrl"> 
+      <form class="form-horizontal" id="form-user-info">
                     <div class="form-group">
                         <label for="firstName" class="col-sm-2 control-label">First
                             Name</label>
@@ -272,17 +273,17 @@
 
                         <div class="col-sm-offset-2 col-sm-10">
                              <span>
-                             	<button ng-click="updateUser('${session.user.userId}')" id="updateUserButton" type="submit 
-                               	class="btn btn-default">Update User</button>
+                              <button ng-click="updateUser('${session.user.userId}')" id="updateUserButton" type="submit 
+                                class="btn btn-default">Update User</button>
                              </span>
                         </div>
                     </div>
 
                 </form>
 
-			</div>
-		</div>
-	</div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
@@ -305,20 +306,20 @@
         src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 
 <script type="text/javascript">
-	
-	$(function(){
-		
-		$("#updateUserButton").click(function(){
-			$( "#myModal" ).dialog("close")
-		})
-		$("#linkThatOpensModal").click(function(){
-			$( "#myModal" ).dialog({
-				width:700,
-				 
-			});
-		})
-	})
-				
+  
+  $(function(){
+    
+    $("#updateUserButton").click(function(){
+      $( "#myModal" ).dialog("close")
+    })
+    $("#linkThatOpensModal").click(function(){
+      $( "#myModal" ).dialog({
+        width:700,
+         
+      });
+    })
+  })
+        
 </script>
 
 
@@ -396,7 +397,7 @@ app.controller('UserCtrl', ['$scope', 'UserService', '$mdDialog',
           
         };
 
-	}]
+  }]
 )
 </script>
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
