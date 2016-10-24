@@ -267,16 +267,16 @@
 									<div class="form-group">
 										<label for="password" class="col-sm-2 control-label">Password</label>
 										<div class="col-sm-5">
-											<input ng-model="user.password" type="password"
-												class="form-control" id="password" name="password"
+											<input ng-model="user.password" type="password" 
+												class="form-control" id="password" name="userPassword"
 												aria-describedby="helpBlock"
 												ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%\^\&*\)\(+=._-])[0-9a-zA-Z!@#\$%\^\&*\)\(+=._-]{8,}$/"
 												required></input> <span id="helpBlock" class="help-block"
 												style="color: white">Password should be at least 8
 												characters, 1 upppercase, 1 lowercase, 1 special character,
 												and one number</span>
-											<div ng-messages="userForm.password.$error"
-												ng-if="userForm.password.$dirty">
+											<div ng-messages="userForm.userPassword.$error"
+												ng-if="userForm.userPassword.$dirty">
 												<div ng-message="required">This field is required</div>
 												<div ng-message="pattern">Please enter a valid
 													password</div>
@@ -284,6 +284,21 @@
 										</div>
 									</div>
 
+									<div class="form-group">
+										<label for="verifyPassword" class="col-sm-2 control-label">Verify Password</label>
+										<div class="col-sm-5">
+											<input ng-model="user.verifyPassword" type="password"
+												class="form-control" id="verifyPassword" name="verifyPassword"
+												ng-pattern="user.password"
+												required></input> 
+											<div ng-messages="userForm.verifyPassword.$error.pattern"
+												ng-if=userForm.verifyPassword.$dirty>
+												<div ng-message="required">This field is required</div>
+												<div ng-message="pattern">Please enter a matching password</div>
+											</div>
+										</div>
+									</div>
+									
 									
 
 									<div class="form-group">
