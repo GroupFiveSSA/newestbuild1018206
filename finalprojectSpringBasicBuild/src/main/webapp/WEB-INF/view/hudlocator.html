@@ -136,7 +136,10 @@
                                 class="form-control" id="hudstate" name="hudstate"
                                 placeholder="State"  th:value="${session.user.state}" required="false"></input>
                                 <button id="lookupButton">Enter</button>
-                                <div id="userAddress" style="display: none;" th:value="${session.user.addressline1} + ${session.user.city} + ${session.user.state} + ${session.user.zipcode}"></div>
+                                <div id="userAddress" name="userAddress" style="display: none;" th:text="${session.user.addressline1}"></div>
+                                <div id="userCity" name="userCity" style="display: none;" th:text="${session.user.city}"></div>
+                                <div id="userState" name="userState" style="display: none;" th:text="${session.user.state}"></div>
+                                <div id="userZip" name="userZip" style="display: none;" th:text="${session.user.zipcode}"></div>
                         </div>
                     </div>
                     

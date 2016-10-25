@@ -21,17 +21,26 @@
 		    var hudLatLong = lat, long;
 		    var agency = "";
 		    var city = "";
-		    var state = document.getElementById("hudstate").value;
+		    var usercity = $("#userCity").html();
+		    var state = $("#hudstate").val();
 		    var rowlimit = "";
 		    var services = "";
 		    var language = "";
 		    var index = 0;
 		    var marker;
 		    var map;
-		    var useraddress = document.getElementById("userAddress").value;
+		    var userzip = $("#userZip").html();
+		    var userstate = $("#userState").html(); 
+		    var useraddress = $("#userAddress").html();
 		    //Variables for div injection
 		    var divdis = '" border: 1px solid; border-radius: 5px; margin-left: 10px; margin-top: 0px; background-color: white;"';
 		    var classname = '"locationItem"';
+		    
+		    console.log(state);
+		    console.log(useraddress);
+		    console.log(usercity);
+		    console.log(userstate);
+		    console.log(userzip);
 
 	      //Google Maps options and call
 	      var mapOptions = {
@@ -93,6 +102,7 @@
 	                        
 	                     //embeded map function that needs user location data and HUD service MDation data   
                     var clickloc = data[index].adr1 + ' ' + data[index].adr2 + ' ' + data[index].city + ' ' + data[index].state_NME + ', ' + data[index].mailingzipcd;
+                    console.log(clickloc);
                     var contentString =  "<table data-lat='"+lat+"' data-lng='"+long+"'><tr><td><br><strong>" + data[index].nme + 
                                       "</strong><br>Location ID: " + data[index].agcid + "<br>" +
                                        data[index].adr1 + " " + 
@@ -104,7 +114,7 @@
                                        "Fax Number" + data[index].fax + "<br></td><td>" + 
                                        "E-Mail: " + data[index].email + "<br>" + 
                                        "Web Address: " + data[index].weburl + '<br><br>' +
-                                       '<button><a style="text-decoration: none; color: black;" href="https://www.google.com/maps/dir/'+ userAddress +'/' + clickloc + '" target="_blank">Get Directions</a></button></td></tr></table>';
+                                       '<button><a style="text-decoration: none; color: black;" href="https://www.google.com/maps/dir/'+ useraddress +' '+ usercity +' '+ userstate +' '+ userzip + '/' + clickloc +'" target="_blank">Get Directions</a></button></td></tr></table>';
 
 
 
@@ -165,6 +175,5 @@
 		mapYo();
         
       })//End of Main function (GET & Display) 
-
 
 }(jQuery));//End of getdisplay.js
